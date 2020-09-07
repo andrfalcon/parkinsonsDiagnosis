@@ -129,3 +129,12 @@ prediction = RandomForestClassifier.predict(user_input)
 # Set a sub header and display the classification
 st.subheader('Classification: ')
 st.write(prediction)
+
+diagnosis_certainty = str(accuracy_score(y_test, RandomForestClassifier.predict(x_test)) * 100) + '%'
+
+if prediction == 1:
+    diagnosis_statement = "There is a {} chance you have Parkinson's disease. God bless you <3".format(diagnosis_certainty)
+elif prediction == 0:
+    diagnosis_statement = "There is a {} chance you do not have Parkinson's Disease. God bless you <3".format(diagnosis_certainty)
+
+st.write(diagnosis_statement)
